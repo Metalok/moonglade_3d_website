@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>  
 <head>
-    <title>THE TITLE OF THE TOUR</title>
-    <meta property="description" content="Moonglade life" />
+    <title>Moonglade Life</title>
+    <meta property="description" content="PUT THE DESCRIPTION HERE" />
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PUT THE TITLE FOR TWITTER HERE">
+    <meta name="twitter:title" content="Moonglade Life">
     <meta name="twitter:description" content="PUT THE DESCRIPTION FOR TWITTER HERE">
-    <meta name="twitter:url" content="PUT THE URL OF THIS WEBPAGE HERE">
+    <meta name="twitter:url" content="https://moonglade.metalok.io">
     <meta name="twitter:image:src" content="https://cloud.3dvista.com//hosting/7843195/8/socialThumbnail.jpg">
     <meta name="twitter:image:width" content="1200">
     <meta name="twitter:image:height" content="630">
 
-    <meta property="og:title" content="PUT THE TITLE OF THE TOUR HERE">
+    <meta property="og:title" content="Moonglade Life">
     <meta property="og:type" content="website">
     <meta property="og:description" content="PUT THE DESCRIPTION HERE">
-    <meta property="og:url" content="PUT THE URL OF THIS WEBPAGE HERE">
+    <meta property="og:url" content="https://moonglade.metalok.io">
     <meta property="fb:app_id" content="817622095004141">
     <meta property="og:image" content="https://cloud.3dvista.com//hosting/7843195/8/socialThumbnail.jpg">
     <meta property="og:image:width" content="1200">
@@ -27,56 +27,27 @@
 
     <style type="text/css">
         html, body { height:100%; margin:0; overflow:hidden; padding:0; width:100%; }
-        iframe { height:100%; position:relative; width:100%; }
+        iframe { height:100%; width:100%; border:0; display:block; }
     </style>
 </head>
 <body>
     <script type="text/javascript">
-        var ua = (function() { return navigator.userAgent.toLowerCase(); })();
-        var inUA = function(value) { return (ua.search(value.toLowerCase()) >= 0); };
-        var mobile = inUA('android') || inUA('ios') || inUA('iphone') || inUA('ipod') || inUA('ipad');
-
-        // Base URL for your tour
         var url = 'https://cloud.3dvista.com//hosting/7843195/8/index.htm' + window.location.hash;
 
-        function redirect() {
-            location.href = url;
-        }
-
         function embed() {
-            var attrs = {
-                'width': '100%',
-                'height': '100%',
-                'src': url,
-                'scrolling': 'auto',
-                'frameborder': '0',
-                'allowfullscreen': '1',
-                'allow': 'fullscreen; accelerometer; gyroscope; magnetometer; vr'
-            };
-            var iframe = document.createElement('IFRAME');
-            for (var name in attrs)
-                iframe.setAttribute(name, attrs[name]);
+            var iframe = document.createElement('iframe');
+            iframe.setAttribute('width', '100%');
+            iframe.setAttribute('height', '100%');
+            iframe.setAttribute('src', url);
+            iframe.setAttribute('scrolling', 'auto');
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allowfullscreen', 'true');
+            iframe.setAttribute('allow', 'fullscreen; accelerometer; gyroscope; magnetometer; vr; autoplay; encrypted-media; camera; microphone; display-capture');
             document.body.appendChild(iframe);
         }
 
-        // For iOS gyroscope/Cardboard compatibility, use redirect instead of embed on mobile
-        if (mobile) {
-            redirect();
-        }
-        else if (navigator.getVRDisplays) {
-            navigator.getVRDisplays().then(function(displays) {
-                if (displays.length > 0)
-                    redirect();
-                else
-                    embed();
-            }).catch(function(err) {
-                embed();
-            });
-        }
-        else {
-            embed();
-        }
+        // Always embed, never redirect
+        embed();
     </script>
 </body>
 </html>
-
